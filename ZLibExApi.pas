@@ -45,6 +45,11 @@ interface
 
 {$I ZLibEx.inc}
 
+{$IFDEF Version5} //Delphi 5 declares PByte in Windows rather than System
+type
+	PByte = ^Byte;
+{$ENDIF}
+
 const
   {** version ids *******************************************************************************}
 

@@ -106,6 +106,7 @@ unit ZLibEx;
 
 interface
 
+{$TYPEDADDRESS OFF}
 {$I ZLibEx.inc}
 
 uses
@@ -1618,7 +1619,7 @@ begin
 
       if zstream.avail_in > 0 then
       begin
-        inStream.Position := inStream.Position - zstream.avail_in;
+        inStream.Position := inStream.Position - LongInt(zstream.avail_in);
       end;
 
       if zresult <> Z_STREAM_END then
@@ -1927,7 +1928,7 @@ begin
 
   if (zresult = Z_STREAM_END) and (FZStream.avail_in > 0) then
   begin
-    StreamPosition := StreamPosition - FZStream.avail_in;
+    StreamPosition := StreamPosition - LongInt(FZStream.avail_in);
 
     FZStream.avail_in := 0;
   end;
